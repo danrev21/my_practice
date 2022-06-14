@@ -1,0 +1,35 @@
+groups
+sudo groupadd -g 10000 group1
+sudo groupadd -g 10001 group2
+sudo groupadd -g 9999 shared
+cat /etc/group
+sudo useradd -g group1 user1
+sudo useradd -g group2 user2
+sudo usermod -aG shared user1
+sudo usermod -aG shared user2
+id user1
+id user2
+passwd user1      ---set/change password
+passwd user2      ---set/change password
+
+--user1
+touch /tmp/test   
+cat > /tmp/test
+Hello! (Ctrl+d)
+chmod 640 /tmp/test
+
+--user2
+cat /tmp/test    --permission denied
+
+--danuser
+chown user1:shared /tmp/test
+
+--user2
+cat /tmp/test    --Hello!
+
+sudo userdel -r user1 ...
+sudo groupdel group1  ...
+
+---------------------------------------------------------------
+
+group1, group2, shared (GID 9999).

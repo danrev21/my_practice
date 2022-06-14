@@ -1,0 +1,16 @@
+while true; do
+   read name
+   if [ "$name" == stop ]; then break
+   else echo "Hello, $name"; fi
+done
+-------------------------------------------------
+#!/bin/bash
+magicNumber=$(( $RANDOM % 100 ))
+echo "Guess the number from 1 to 100:"
+while true; do
+   read x
+   if [ "$x" -lt "$magicNumber" ]; then echo "greater"
+   elif [ "$x" -gt "$magicNumber" ]; then echo "less"
+   else echo "You win!"; break; fi
+done
+~

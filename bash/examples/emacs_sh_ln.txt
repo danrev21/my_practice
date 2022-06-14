@@ -1,0 +1,19 @@
+yum install emacs --(under root)
+
+emacs script 
+emacs script.sh     -for close emacs Ctrl+x Ctrl+c
+
+#!/bin/bash
+
+echo Hello
+---for close emacs Ctrl+x Ctrl+c
+chmod +x script script.sh
+ln -s script script_soft
+ln script.sh script_hard
+sh script_soft
+sh script_hard
+rm script script.sh
+sh script_soft
+sh script_hard
+rm script_soft script_hard
+

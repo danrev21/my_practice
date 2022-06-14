@@ -1,0 +1,9 @@
+Установка CHROME
+
+скачиваем Chrome
+
+ wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+
+Установка пакетов на Ubuntu требует привилегий администратора. Для установки пакета Chrome на Вашу систему выполните следующую команду в качестве пользователя с правами sudo:
+
+ sudo apt install ./google-chrome-stable_current_amd64.deb

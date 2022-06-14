@@ -1,0 +1,88 @@
+узнать размер файла
+du -sk test.img
+4884    test.img
+---------
+du -sh test.img
+4.8M    test.img
+------------
+ls -lh test.img
+-rw-r--r-- 1 root root 4.8M Mar 31 22:36 test.img
+-------------------
+tar -cf test.tar file1 file2 file3
+ll test.tar
+-rw-r--r-- 1 root root 10240 Mar 31 22:44 test.tar
+-------------------
+tar -tf test.tar
+file1
+file2
+file3
+---------------------
+extact
+tar -xf test.tar
+--------------------
+compress
+tar -zcf test.tar
+-------------------
+tar -C "/data/files/cities/" -xzvf cities.tar.gz
+tar -C "/data/files/cities/" -xjvf cities.tar.bz2
+-------------
+
+
+yum install tree -y command
+tar -cf backup.tar backup1.txt backup2.txt
+gunzip -c cities.tar.gz > /data/files/cities/
+sudo yum install unzip
+unzip backup.zip
+mv backup.zip /data/files/zip
+zip backup.zip backup1.txt backup2.txt
+/data/files $ mv /data/files/backup.zip .
+rm backup1.txt backup2.tx
+
+
+Функции, которые может выполнять команда:
+
+Функция	Длинный
+формат	Описание
+-A	--concatenate	Присоединить существующий архив к другому
+-c	--create	Создать новый архив
+-d	--diff
+--delete	Проверить различие между архивами
+Удалить из существующего архива файл
+-r	--append	Присоединить файлы к концу архива
+-t	--list	Сформировать список содержимого архива
+-u	--update	Обновить архив более новыми файлами с тем же именем
+-x	--extract	Извлечь файлы из архива
+При определении каждой функции используются параметры, которые регламентируют выполнение конкретных операций с tar-архивом:
+
+Параметр	Длиннный
+формат	Описание
+-C dir	--directory=DIR	Сменить директорию перед выполнением операции на dir
+-f file	--file	Вывести результат в файл (или на устройство) file
+-j	--bzip2	Перенаправить вывод в команду bzip2
+-p	--same-permissions	Сохранить все права доступа к файлу
+-v	--verbose	Выводить подробную информацию процесса
+--totals	Выводить итоговую информацию завершенного процесса
+-z	--gzip	Перенаправить вывод в команду gzip
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

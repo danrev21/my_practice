@@ -1,0 +1,22 @@
+------------------------------------------------------------------------
+yum install tree -y command  -Install tree utility using 
+Output:
+tree /<your_user_home_directory> command should look like this:
+------------------------------------------------------------------------
+yum install emacs --(under root)
+emacs script.sh     -for close emacs Ctrl+x Ctrl+c
+#!/bin/bash
+
+echo Hello
+chmod +x script script.sh
+chmod +x file.command   --убедиться что файл исполняемый
+sh script.sh
+-------------------------------------------------------------------------
+yum install gpm     --activate mouse
+service gpm start   --to start
+chkconfig gpm on    --autoload start
+-------------------------------------------------------------------------
+yum install epel-release
+
+yum install nginx
+-------------------------------------------------------------------------

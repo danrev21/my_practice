@@ -1,0 +1,34 @@
+Task
+Prerequisites:
+    1. Login to CentoOS7 VM as root
+
+You are to develop a bash script provision.sh that being invoked as root performs the following:
+    1. (as root) Create user Name_Surname with primary group Name_Surname, UID = 505, GID=505
+    2. (as root) Create user mongo with primary group staff, UID=600, GID=600
+    3. (as root) Create folders /apps/mongo/, give 750 permissions, set owner mongo:staff
+    4. (as root) Create folders /apps/mongodb/, give 750 permissions, set owner mongo:staff
+    5. (as root) Create folders /logs/mongo/, give 740 permissions, set owner mongo:staff
+    6. (as mongo) Download with wget https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-3.6.5.tgz
+    7. (as mongo) Download with curl https://fastdl.mongodb.org/src/mongodb-src-r3.6.5.tar.gz
+    8. (as mongo) Unpack mongodb-linux-x86_64-3.6.5.tgz to /tmp/
+    9. (as mongo) Copy ./mongodb-linux-x86_64-3.6.5/* to /apps/mongo/
+    10. (as mongo) Update PATH on runtime by setting it to PATH=<mongodb-install-directory>/bin:$PATH
+    11. (as mongo) Update PATH in .bash_profile and .bashrc with the same
+    12. (as root) Setup number of allowed processes for mongo user: soft and hard = 32000
+    13. (as root) Give sudo rights for Name_Surname to run only mongod as mongo user
+    14. (as root) Create mongo.conf from sample config file from archive 7.
+    15. (as root) Replace systemLog.path and storage.dbPath with /logs/mongo/ and /apps/mongodb/ accordingly in mongo.conf using sed or AWK
+    16. (as root) Create SystemD unit file called mongo.service. Unit file requirenments:
+        a. Pre-Start: Check if file /apps/mongo/bin/mongod and folders (/apps/mongodb/ and /logs/mongo/) exist, check if permissions and ownership are set correctly.
+    17. (as root) Add mongo.service to autostart
+
+Check
+    1. Run mongod from Name_Surname
+    2. Prove that process is running
+        a. PID exists
+        b. Corresponding [initandlisten] message in mongo log 
+        c. Port is really listening
+    3. Stop the process
+    4. Verify that systemd unit is working (start, status, stop).
+    5. Send email with script provision.sh  and screenshot of output Check in attachments. 
+Subject: [Bash]_Name_Surname_exit_task

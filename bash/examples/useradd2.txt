@@ -1,0 +1,18 @@
+sudo groupadd -g 1050 dtyuev_group
+grep -i dtyuev_group /etc/group
+sudo useradd -u 1040 -g 1050 -d /home/dtyuev_home dtyuev
+sudo usermod -a -G cdrom dtyuev
+id dtyuev
+sudo passwd dtyuev
+su dtyuev
+echo $HOME
+whoami
+
+---------------------------------------------------------------
+
+
+
+
+
+
+

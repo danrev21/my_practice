@@ -1,0 +1,18 @@
+Установка VirtualBox Installation (Centos7)
+
+wget https://download.virtualbox.org/virtualbox/rpm/el/virtualbox.repo -O /etc/yum.repos.d/virtualbox.repo
+
+sudo yum install -y VirtualBox-5.2
+
+sudo systemctl status vboxdrv
+
+Note: you must sign Virtualbox kernel modules before using VirtualBox. Link https://stegard.net/2016/10/virtualbox-secure-boot-ubuntu-fail/
+
+Update the location of sign-file utility to /usr/src/kernels/$(uname -r)/scripts/sign-file
+
+
+Oracle offers extension pack to add additional functionalities such as USB 2.0/3.0, VirtualBox Remote Desktop Protocol (VRDP) support, Disk encryption, Host webcam passthrough, Intel PXE boot ROM, and PCI passthrough to the Oracle VM VirtualBox base installation.
+Open shell
+Run the following:
+wget https://download.virtualbox.org/virtualbox/5.2.32/Oracle_VM_VirtualBox_Extension_Pack-5.2.32.vbox-extpack
+To install the extension pack, go to VirtualBox >> Preference >> Extensions >> browse for extension pack by clicking on the + icon.

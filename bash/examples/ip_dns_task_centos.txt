@@ -1,0 +1,23 @@
+Setup 2 VMs: VM1 and VM2
+
+Install and start httpd service on VM1.
+sudo yum install httpd
+sudo systemdctl daemon-reload
+sudo systemdctl start httpd
+
+Create file /var/www/html/index.html with the following content on VM1:
+Hello
+vi /var/www/html/index.html  ---input Hello
+
+Configure VM2 to resolve name myserver.local to IP address of VM1.
+ip addr show   ---on vm1
+vi /etc/hosts  ---on vm2
+---add ip address vm1 & myserver.local
+
+Using command curl -L myserver.local verify that you can access nginx server running on VM1 from VM2.
+---------------------------------------------------------------------------------------
+
+Self-review:
+command curl -L myserver.local returns the following response:
+
+Hello

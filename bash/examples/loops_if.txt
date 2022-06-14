@@ -1,0 +1,20 @@
+WEEKOFFSET=$[ $(date +"%V") % 2 ]
+# Test if we have a remainder.  If not, this is an even week so send a message.
+# Else, do nothing.
+if [ $WEEKOFFSET -eq "0" ]; then
+  echo "Sunday evening, put out the garbage cans." | mail -s "Garbage cans out" your@your_domain.org
+fi
+---------------------------------------------------
+if (("$SCORE" < "0"))  || (("$SCORE" > "100")); then
+    echo "Be serious.  Common, try again: "
+-----------------------------------------------------------------
+#!/bin/bash
+magicNumber=$(( $RANDOM % 100 ))
+echo "Guess the number from 1 to 100:"
+while true; do
+   read x
+   if [ "$x" -lt "$magicNumber" ]; then echo "greater"
+   elif [ "$x" -gt "$magicNumber" ]; then echo "less"
+   else echo "You win!"; break; fi
+done
+~

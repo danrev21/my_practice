@@ -1,0 +1,24 @@
+echo '1111111111' > file1.txt
+cat file1.txt
+touch file1.txt
+mkdir dir1
+cp file1.txt dir1
+cd dir1
+rm file1.txt
+cd ..
+cd ../..
+rm dir dir1/
+rm -r dir1
+touch file2.txt file3.txt file4.txt
+touch file22.txt file33.txt file44.txt
+mkdir files_1 files_22
+cp file?.txt files1
+cp file?.txt files_1
+mv file??.txt files_2
+mv file??.txt files_22
+rm files_1/*
+mv file?.txt -v files_1
+ls -l files_22
+mkdir new_files
+cp files_1 new_files/
+cp -r files_1 new_files/

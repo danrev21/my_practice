@@ -1,0 +1,32 @@
+groups
+sudo groupadd -g 10000 group1
+cat /etc/group
+sudo useradd -g group1 user1
+sudo usermod -aG shared user1
+id user1
+passwd user1      ---set/change password
+
+chmod 640 /tmp/test
+
+chown user1:shared /tmp/test
+
+sudo userdel -r user1
+sudo groupdel group1
+
+chmod 600 /tmp/homework/write
+chmod 770 /tmp/homework/immutable  /tmp/homework/ownership
+chmod o=r /tmp/homework/read
+chmod o=w /tmp/homework/write
+chmod o=rx /tmp/homework/execute
+
+chmod +x file.command   --убедиться что файл исполняемый
+
+sudo chown user2 /tmp/homework/ownership
+
+sudo chattr +i /tmp/homework/immutable 
+sudo lsattr /tmp/homework/immutable
+rm /tmp/homework/immutable          --permission denied
+sudo chattr -i /tmp/homework/immutable 
+sudo lsattr /tmp/homework/immutable 
+rm /tmp/homework/immutable
+sudo chattr -R +i /tmp/homework/

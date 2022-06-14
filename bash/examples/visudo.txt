@@ -1,0 +1,29 @@
+В директории /etc/sudoers.d создаем файл bob
+
+sudo visudo -f bob
+и прописываем разрешение выполнять команду fdisk без пароля
+bob  ALL=(ALL:ALL) NOPASSWD: /sbin/fdisk
+----------------
+все команды без пароля
+bill ALL = (ALL:ALL)  NOPASSWD:ALL
+----------------
+здесь все про алиасы
+https://itnots.ru/linux/sudoers-pravila-vyborochno-razreshit-vypolnenie-komand-polzovatelyam-bez-root/
+
+https://itnots.ru/linux/sudoers-pravila-vyborochno-razreshit-vypolnenie-komand-polzovatelyam-bez-root/
+-----------------------------------------------
+UID
+root@localhost /etc/sudoers.d $ cat /etc/passwd | grep bob
+bob:x:1001:1001::/home/bob:/bin/bash
+root@localhost /etc/sudoers.d $ cat /etc/passwd | grep bill
+bill:x:1011:1011::/home/bill:/bin/bash
+root@localhost /etc/sudoers.d $ cat /etc/group | grep devops
+devops:x:1337:bill
+root@localhost /etc/sudoers.d $ cat /etc/passwd
+root:x:0:0:root:/root:/bin/bash
+bin:x:1:1:bin:/bin:/sbin/nologin
+daemon:x:2:2:daemon:/sbin:/sbin/nologin
+adm:x:3:4:adm:/var/adm:/sbin/nologin
+.....................................
+
+-------------------------------------------------

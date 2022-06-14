@@ -1,0 +1,106 @@
+Day 1 SED/AWK
+
+Task
+
+
+Clone this repository. Create new branch <name>_<surname>_sa.
+
+
+❗ Create new script sed_awk.sh in 01_SED_AWK folder.
+
+
+With given passwd (01_SED_AWK/src/passwd) file do following:
+a. Create copy of passwd file to passwd_new. ❗ Do all modifications on passwd_new file
+b. Change shell for user saned from /usr/sbin/nologin to /bin/bash using AWK
+c. Change shell for user avahi from /usr/sbin/nologin to /bin/bash using SED
+d. Save only 1-st 3-th 5-th 7-th columns of each string based on : delimiter
+e. Remove all lines from file containing word daemon
+f. Change shell for all users with even UID to /bin/zsh
+
+
+With given poem.txt file do following:
+a. Create copy of poem.txt file to poem_new.txt. ❗ Perform all modifications on poem_new.txt file
+b. Replace two or more of the character e in a row with the string alala. (see ➡ salala, Eeeeehaaw ➡ Ealalahaaw)
+c. Replace every period . at the end of a line with an exclamation point !. (. ➡ !)
+d. Remove empty lines
+
+
+EXTRA. Create new script sed_awk_extra.sh in 01_SED_AWK folder. Create copy of passwd file to passwd_extra. Do changes in items 3.b/3.c using bash only. (No sed, awk, vim and replace, just pure bash).
+
+Create a merge request to run tests and verify that task is done correctly
+----------------------------------------------------------------------------------------
+#!/bin/bash
+
+# create files
+touch passwd_new poem_new.txt
+cp src/passwd passwd_new
+cp src/poem.txt poem_new.txt
+# Change file passwd
+cat passwd_new | awk 'BEGIN{FS=OFS=":"} /saned/ {$NF="/bin/bash"}{print $0}' | 
+	    sed -r -e 's/(^avahi:.*):.*$/\1:\/bin\/bash/g' | 
+	            awk 'BEGIN{FS=OFS=":"} {print $1, $3, $5, $7}' | 
+		                sed '/.*daemon.*/d' | 
+				                awk 'BEGIN{FS=OFS=":"} $2 ~ /d*[02468]$/ {$NF="/bin/zsh"}{print $0}' | head -c -1 > passwd_new
+# Change file poem.txt
+cat poem_new.txt | sed -r 's/e{2,}/alala/g' | sed 's/.$/!/g' | sed '/^$/d' > poem_new.txt
+---------------------------------------------------------------------------------------------
+#!/bin/bash
+
+# Change file passwd
+cat src/passwd_new | awk 'BEGIN{FS=OFS=":"} /saned/ {$NF="/bin/bash"}{print $0}' | 
+    sed -r -e 's/(^avahi:.*):.*$/\1:\/bin\/bash/g' | 
+        awk 'BEGIN{FS=OFS=":"} {print $1, $3, $5, $7}' | 
+            sed '/.*daemon.*/d' | 
+                awk 'BEGIN{FS=OFS=":"} $3 ~ /d*[02468]$/ {$NF="/bin/zsh"}{print $0}' > src/passwd_new
+# Change file poem.txt
+cat src/poem.txt_new | sed -r 's/e{2,}/alala/g' | sed 's/.$/!/g' > src/poem.txt_new
+--------------------------------------------------------------------------------------------
+
+#!/bin/bash
+# /mnt/d/workspace/stage2-bash/01_SED_AWK/src
+# Change shell for user saned from /usr/sbin/nologin to /bin/bash using AWK
+awk 'BEGIN{FS=OFS=":"} /saned/ {$NF="/bin/bash"}{print $0}' passwd_new
+
+# Change shell for user avahi from /usr/sbin/nologin to /bin/bash using SED
+sed -r 's/(^avahi:.*):.*$/\1:\/bin\/bash/g' passwd_new
+
+# Save only 1-st 3-th 5-th 7-th columns of each string based on : delimiter
+awk 'BEGIN{FS=OFS=":"} {print $1, $3, $5, $7}' passwd_new
+
+# Remove all lines from file containing word daemon
+sed '/.*daemon.*/d' passwd_new
+
+# Change shell for all users with even UID to /bin/zsh
+awk 'BEGIN{FS=OFS=":"} $3 ~ /d*[02468]$/ {$NF="/bin/zsh"}{print $0}' passwd_new
+
+# Replace two or more of the character e in a row with the string alala. (see ➡ salala, Eeeeehaaw ➡ Ealalahaaw)
+sed -r 's/e{2,}/alala/g' poem.txt_new
+
+# Replace every period . at the end of a line with an exclamation point !. (. ➡ !)
+sed 's/.$/!/g' poem.txt_new
+
+----------------------------------
+
+#!/bin/bash
+# /mnt/d/workspace/stage2-bash/01_SED_AWK/src
+# Change shell for user saned from /usr/sbin/nologin to /bin/bash using AWK
+cat src/passwd_new | awk 'BEGIN{FS=OFS=":"} /saned/ {$NF="/bin/bash"}{print $0}' > src/passwd_new
+
+# Change shell for user avahi from /usr/sbin/nologin to /bin/bash using SED
+cat src/passwd_new | sed -r 's/(^avahi:.*):.*$/\1:\/bin\/bash/g' > src/passwd_new
+
+# Save only 1-st 3-th 5-th 7-th columns of each string based on : delimiter
+cat src/passwd_new | awk 'BEGIN{FS=OFS=":"} {print $1, $3, $5, $7}' > src/passwd_new
+
+# Remove all lines from file containing word daemon
+cat src/passwd_new | sed '/.*daemon.*/d' > src/passwd_new
+
+# Change shell for all users with even UID to /bin/zsh
+cat src/passwd_new | awk 'BEGIN{FS=OFS=":"} $3 ~ /d*[02468]$/ {$NF="/bin/zsh"}{print $0}' > src/passwd_new
+
+# Replace two or more of the character e in a row with the string alala. (see ➡ salala, Eeeeehaaw ➡ Ealalahaaw)
+cat src/poem.txt_new | sed -r 's/e{2,}/alala/g' > src/poem.txt_new
+
+# Replace every period . at the end of a line with an exclamation point !. (. ➡ !)
+cat src/poem.txt_new | sed 's/.$/!/g' > src/poem.txt_new
+

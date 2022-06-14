@@ -1,0 +1,13 @@
+pwd
+mkdir homework && ls
+touch homework/file1 && ls -l homework 
+cat > homework/file1
+Daniil Tyuev
+cd / && pwd
+touch -r /home/t.dan/homework/file1 /home/t.dan/homework/file2  – allows to specify a reference file and use its timestamps
+                  instead of the current time
+ls -la /home/t.dan/homework
+cat /home/t.dan/homework/file1
+find /home/t.dan/homework -mmin -60 -type f
+rm -r homework/  – removes non-empty directories
+ls -la /home/t.dan/homework

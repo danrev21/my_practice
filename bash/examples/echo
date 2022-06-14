@@ -1,0 +1,15 @@
+echo 'Why can'\''t I write '"'"'s between single quotes'
+# Why can't I write 's between single quotes
+
+echo -e 'FROM nginx\nEXPOSE 80' > provision.sh
+echo RUN echo \"\<html\>\<head\>\<\/head\>\<body style\=\'background-color\:green\;\'\>\<div style\=\'text\-align\:center\; color\: white\;\'\>\<h1\>Green\</h1\>\</div\>\</body\>\</html\>\" \> /usr/share/nginx/html/index.html >> provision.sh
+echo CMD nginx -g \'daemon off\;\' >> provision.sh
+#
+FROM nginx
+EXPOSE 80
+RUN echo "<html><head></head><body style='background-color:green;'><div style='text-align:center; color: white;'><h1>Green</h1></div></body></html>" > /usr/share/nginx/html/index.html
+CMD nginx -g 'daemon off;'
+
+
+
+

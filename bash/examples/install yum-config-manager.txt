@@ -1,0 +1,5 @@
+yum --enablerepo="base" -y install yum-utils
+
+А теперь можно подключить все имеющиеся репозитории:
+
+yum-config-manager --enable base centosplus contrib extras updates

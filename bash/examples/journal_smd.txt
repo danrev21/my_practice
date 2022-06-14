@@ -1,0 +1,23 @@
+install nginx service using commands:
+yum install epel-release
+yum install nginx
+systemctl daemon-reload
+
+Start nginx service.
+systemctl start nginx.service
+systemctl status nginx.service
+
+Stop nginx service.
+systemctl stop nginx.service
+
+Check nginx service logs.
+journalctl -u nginx.service -b
+
+Introduce error to nginx startup by moving nginx config file using command:
+sudo mv /etc/nginx/nginx.conf ./
+
+Attempt to start nginx service.
+systemctl start nginx.service
+
+View only error entries in nginx logs.
+journalctl -p err -u nginx.service –b -x

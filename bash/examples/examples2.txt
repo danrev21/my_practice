@@ -1,0 +1,59 @@
+#!/bin/bash
+leanYearMonths=(31 28 31 30 31 30 31 31 30 31 30 31)
+N=$(date +%m)
+for n in ${!leanYearMonths[@]}; 
+do
+  if [ $N -eq $n ];
+   then echo ${leanYearMonths[$n-1]};
+  fi
+done
+--------------------------------------------------------
+#!/bin/bash
+p=$(ps -ef | grep bash)
+# p=($(ps -ef))
+case "$p" in
+   *bash*) echo "This machine is running a web server."
+ ;;
+esac
+
+ps -ef | grep bash | awk '{ print $8 }'| cut -d- -f2 | cut -dg -f1
+-----------------------------------------------------------
+#!/bin/bash
+p=$(ps -ef | grep [h]ttpd)
+# p=($(ps -ef))
+case "$p" in
+   *[h]ttpd*) echo "This machine is running a web server."
+ ;;
+esac
+-------------------------------------------------------------
+#!/bin/bash
+function rand() {
+    echo $(($RANDOM % ${1}))
+}
+for item in `seq 1 10`; do
+  value="$(rand 100)"
+  echo "[$item] => ${value}"
+done > result
+cat result
+echo "min=$(cat result | awk '{ print $3 }' | sort -rn | tail -n1)"
+echo "max=$(cat result | awk '{ print $3 }' | sort -rn | head -n1)"
+r=($(cat result | awk '{ print $3 }'))
+t=0
+for i in ${r[@]}; do
+  let t+=$i
+done
+ echo "sum=$t"
+------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
