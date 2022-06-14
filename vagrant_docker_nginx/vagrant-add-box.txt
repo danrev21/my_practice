@@ -1,0 +1,16 @@
+# download needed vagrant box
+# in our case it is 'ubuntu/focal64'
+
+# Vagrantfile:
+Vagrant.configure("2") do |config|
+  config.vm.box = "ubuntu/focal64"
+end
+
+# you can not copy Vagrantfile to work directory
+
+vagrant box add ubuntu/focal64 file:///D:\vagrantVM\vagrant-data\ubuntu-focal-vagrantbox\focal-server-cloudimg-amd64-vagrant.box
+vagrant box list
+vagrant init ubuntu/focal64
+vagrant up
+
+
