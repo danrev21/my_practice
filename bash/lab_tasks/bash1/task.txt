@@ -1,0 +1,24 @@
+Task
+
+
+Create new branch <name>_<surname>_bash2.
+
+
+Create a script bash_day2.sh in ./03_BASH/ folder.
+
+
+Script should be executable with /bin/bash.
+
+
+Script should do the following:
+a. NAME_SURNAME variable passed as an argument to the script. For example: ./bash_day2.sh Walter_White
+b. Have ARRAY array variable containing letters of your surname
+c. Create SURNAME folder in current directory ./
+d. Create function makefile that takes two arguments (size, filename) and creates file $filename of $size size in current directory
+e. Create any loop that iterates over SURNAME variable excluding the last element and calls makefile function passing loop (index + 1) as size in megabytes(M) and array element as filename to create files in SURNAME folder. For example: if SURNAME=White 4 files should be created with: W - 1M; h - 2M and etc.
+
+
+Create length(SURNAME) * 2 folders named 1, 2, 3, 4, 5, … in SURNAME folder. For example: if SURNAME=White then length=5 10 folders should be created.
+
+
+Create a command that runs the script above while redirecting ALL output to ./log.log file (write command as comment into script).

@@ -1,0 +1,59 @@
+Day 2 BASH
+
+Task
+
+Create new branch <name>_<surname>_bash1.
+
+Create a script bash_day1.sh in ./02_BASH/ folder.
+Script should be executable with /bin/bash.
+Make NAME, SURNAME and FAIL named arguments (-n, -s, -f)
+Script should not stop execution if it encounters errors.
+Script should be able to run many times without errors.
+
+Script should do the following:
+a. Have NAME and SURNAME variables (values are your name and surname)
+   
+b. Have FAIL variable
+   
+c. Have ARRAY array variable containing letters of your surname
+   
+   
+d. Create folder in current directory ./ and name it as NAME_SURNAME
+   mkdir NAME_SURNAME
+
+e. Create 3 files of the following sizes in NAME_SURNAME folder named after ARRAY variable elements: 1st element(1KiB), 2nd element (1MiB), last element (10MiB). Each file must have size that is specified in brackets. Sizes are specified in KiB and MiB (1024 based). For example: SURNAME="Trump", then ARRAY=(t r u m p). 3 files would be created: t with size of 1KiB, r with size of 1MiB and p with size of 10MiB
+   
+
+f. Search current directory ./ for all files modified in last 1h and output those file(s) names into your NAME_SURNAME folder into search.log file.
+g. Create tarball with the name archive.tar with 1st and 2nd files from task 6.e. Save this tarbal into your folder NAME_SURNAME.
+h. Append 3rd file created in task 6.e to archive.tar
+i. Remove files created in task 6.e
+j. Create ./unarchived folder and unarchive archive.tar into this folder
+k. Exit with exit code 3 if FAIL=true, exit with exit code 2 if FAIL=false, exit with exit code 0 if FAIL variable is not set
+
+
+День 2 БАШ
+
+Задача
+
+Создайте новую ветку <имя>_<фамилия>_bash1.
+
+Создайте сценарий bash_day1.sh в папке ./02_BASH/.
+Скрипт должен быть исполняемым с помощью /bin/bash.
+Укажите ИМЯ, ФАМИЛИЮ и НЕ ИСПОЛЬЗУЙТЕ именованные аргументы (-n, -s, -f)
+Скрипт не должен останавливать выполнение, если он обнаруживает ошибки.
+Скрипт должен быть способен запускаться много раз без ошибок.
+
+
+Скрипт должен выполнять следующее:
+a. Иметь переменные ИМЯ и ФАМИЛИЯ (значения - это ваше имя и фамилия)
+b. Иметь переменную FAIL
+c. Иметь переменную массива ARRAY, содержащую буквы вашей фамилии
+d. Создайте папку в текущем каталоге ./ и назовите ее NAME_SURNAME
+e. Создайте 3 файла следующих размеров в папке NAME_SURNAME, названной в честь переменных элементов МАССИВА: 1-й элемент (1 КБ), 2-й элемент (1 МБ), последний элемент (10 МБ). Каждый файл должен иметь размер, указанный в скобках. Размеры указаны в КБ и MiB (на основе 1024). Например: ФАМИЛИЯ="Трамп", затем МАССИВ=(t r u m p). Будут созданы 3 файла: t размером 1 КБ, r размером 1 МБ и p размером 10 МБ
+f. Найдите в текущем каталоге ./ все файлы, измененные за последние 1 час, и выведите имена этих файлов в папку NAME_SURNAME в файле search.log.
+g. Создайте архивный файл с именем archive.tar с 1-м и 2-м файлами из задачи 6.e. Сохраните этот архивный файл в своей папке NAME_SURNAME.
+h. Добавьте 3-й файл, созданный в задаче 6.e, в архив.tar
+i. Удалите файлы, созданные в задаче 6.e
+j. Создайте папку ./unarchived и разархивируйте архив.tar в эту папку
+k. Выход с кодом выхода 3, если ОШИБКА =истина, выход с кодом выхода 2, если ОШИБКА =ложь, выход с кодом выхода 0, если переменная FAIL не установлена
