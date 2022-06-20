@@ -1,0 +1,90 @@
+docker login -u docker-registry-username
+docker push dtyuev/mynginx:tagname
+
+sudo docker search image-name
+
+Working with Images
+Lifecycle
+docker images- shows all images;
+docker import- creates an image from a tarball;
+docker build- creates image from Dockerfile;
+docker commit- creates image from a container, pausing it temporarily if it is running;
+docker rmi- removes an image;
+docker load- loads an image from a tar archive as STDIN, including images and tags;
+docker save- saves an image to a tar archive stream to STDOUT with all parent layers, tags & versions;
+             
+Info
+docker history- shows history of image;
+docker tag- tags an image to a name (local or registry).
+
+Running Contianers
+docker run --user 1000:0 jenkins id
+docker run --group-add 123 jenkins id
+docker run --workdir /var/jenkins_home jenkins pwd
+docker run -it -e MYVAR="My Variable" centos env | grep MYVAR
+docker run -d --label app=web1 nginx
+docker run -d myhttpd:1.0
+docker run -P -d myhttpd:1.0
+docker run -d -p 8081:80 --name h8081 myhttpd:1.0
+docker run -d --restart=always --name sleeper centos sleep 5
+docker run -d --restart=unless-stopped --name sleeper centos sleep 5
+docker run centos cat /etc/redhat-release
+docker run -it centos bash
+docker run -dit centos
+docker run -dit busybox
+
+Stopping and Removing Contianers
+docker stop h8082
+docker rm 014e5efa5ca9
+docker rm $(docker stop $(docker ps -a -q))
+docker ps -qa | xargs -r docker rm
+
+Working with Network
+docker network connect - Connect a container to a network
+docker network create - Create a network
+docker network disconnect - Disconnect a container from a network
+docker network inspect - Display detailed information on one or more networks
+docker network ls - List networks
+docker network prune - Remove all unused networks
+docker network rm - Remove one or more networks
+docker info | grep Network
+
+Working with logs
+docker logs container_name 
+docker logs container_id
+docker logs -f …
+docker run -dt --log-driver=journald --name httpd httpd
+journalctl -ab CONTAINER_NAME=httpd
+
+
+docker run -d -p 80:80 -v /usr/share/nginx/html nginx
+docker run -d -p 80:80 -v nginx_data:/usr/share/nginx/html nginx
+docker run -d --name html_data -v /usr/share/nginx/html busybox sleep infinity
+docker run -d --volumes-from html_data -p 81:80 nginx
+docker volume create --name http-custom-data
+docker volume ls
+docker volume inspect http-custom-data
+
+Docker-Compose commands
+docker-compose up -d 
+docker-compose ps 
+docker-compose exec mariadb mysqladmin -p password version 
+docker-compose images 
+docker-compose logs mariadb 
+docker-compose restart mariadb 
+docker-compose stop mariadb 
+docker-compose down docker-compose down --volumes 
+docker-compose build docker-compose up -d 
+docker-compose up -d --build 
+docker-compose up -d --no-build 
+docker-compose up -d --no-cache 
+
+docker commit --change='CMD ["apachectl", "-DFOREGROUND"]' -c "EXPOSE 80" c3f279d17e0a  svendowideit/testimage:version4
+
+docker tag nginx:latest nginx:new  #create image copy but new tag
+
+docker build --build-arg CENTOS_IMAGE=centos:8 -t c8j11 .
+
+docker inspect tomcat-man | jq -r '.[].State.Health'
+docker inspect tomcat-man | jq '.[].ContainerConfig.ExposedPorts'
+dock inspect tomcat-man | jq '.[].ContainerConfig.Hostname'
